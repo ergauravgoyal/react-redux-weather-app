@@ -1,0 +1,31 @@
+import React, { Component } from 'react';
+// import { GoogleMapLoader, GoogleMap } from 'react-google-maps';
+// export default (props) => {
+//     return (
+//         <GoogleMapLoader
+//             containerElement={<div style={{ height: '100%' }} />}
+//             googleMapElement={
+//                 <GoogleMap defaultZoom={12} defaultCenter={{ lat: props.lat, lng: props.lon }} />
+//             }
+//         />
+//     );
+// }
+class GoogleMap extends Component {
+    componentDidMount() {  //called automatically once the component is rendered in screen
+        new google.maps.Map(this.refs.map, {
+            zoom: 12,
+            center: {
+                lat: this.props.lat,
+                lng: this.props.lon
+            }
+        });
+    }
+    render() {
+        return (
+            //this.refs.map will give direct reference to this html element
+            <div ref="map" />
+        )
+    }
+}
+
+export default GoogleMap;
